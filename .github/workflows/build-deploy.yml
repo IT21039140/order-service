@@ -1,0 +1,22 @@
+name: Deploy to Azure Web App
+
+on:
+  push:
+    branches:
+      - main  # Set your branch name here
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '18.17.0' # Set your Node.js version here
+
+    - name: npm install, build, and test
+      run: |
+        npm install
+        npm run build  # or your build command
